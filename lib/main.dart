@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
         '/login': (context) => LoginScreen(),
         '/register': (context) => RegisterScreen(),
         '/home': (context) => HomeScreen(),
-        // '/continue_learning': (context) => ContinueLearningScreen(),
+
         '/profile': (context) => ProfileScreen(),
       },
     );
@@ -109,6 +109,8 @@ class RegisterScreen extends StatelessWidget {
 }
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -135,6 +137,7 @@ class _HomeScreenState extends State<HomeScreen> {
       'description': 'Capture your travel adventures beautifully.',
       'imageUrl': 'https://media.istockphoto.com/id/1034301914/photo/nature-photographer-norway-lofoten-archipelago.jpg?s=612x612&w=0&k=20&c=Ld-m38V3XfYKsiBtcYTdCfsNJNj7QgGjyGOxlHIU-a0=',
     },
+
   ];
 
   final List<Map<String, String>> myCourses = [];
@@ -143,7 +146,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home'),
+        title: Text('Photography Courses'),
       ),
       body: ListView.builder(
         itemCount: courses.length,
@@ -243,12 +246,25 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
-
-
 class CourseDetailScreen extends StatelessWidget {
   final Map<String, String> course;
 
   CourseDetailScreen({required this.course});
+
+  String getCourseDetails(String title) {
+    switch (title) {
+      case 'Landscape Photography':
+        return 'This course will teach you the art of capturing stunning landscapes. Explore techniques for lighting, composition, and showcasing natural beauty.Landscape photography is the art of capturing pictures of nature and the outdoors in a way that brings your viewer into the scene. From grand landscapes to intimate details, the best photos demonstrate the photographers own connection to nature and capture the essence of the world around them.';
+      case 'Wedding Photography':
+        return 'Learn how to capture beautiful and memorable wedding moments. This course covers posing, lighting, and storytelling for wedding photography.This style of photography blends portraiture, candid shots, and event photography to tell a complete story of the day. Wedding photographers often use natural light, scenic backdrops, and intricate compositions to enhance the beauty of each frame. Special attention is given to details like wedding attire, décor, and meaningful gestures, ensuring every element is immortalized.';
+      case 'Wildlife Photography':
+        return 'Dive into the wild and learn how to capture animals in their natural habitat. This course focuses on patience, timing, and equipment tips.This type of photography emphasizes respect for animals and their ecosystems, often raising awareness about conservation efforts. Wildlife photography combines technical skill, creative vision, and a passion for the natural world to produce images that inspire awe, wonder, and a deeper connection to the planets incredible biodiversity.';
+      case 'Travel Photography':
+        return 'Discover the secrets to capturing your travel experiences beautifully. Learn to document culture, architecture, and landscapes on the go.This type of photography often requires adaptability, creativity, and a keen eye for detail. From shooting in diverse lighting conditions to interacting respectfully with local communities, travel photographers immerse themselves in their surroundings to authentically capture the spirit of their journey. The resulting images inspire exploration and foster a deeper appreciation for the worlds cultural and geographic diversity.';
+      default:
+        return 'Enhance your photography skills with this course. Learn tips and techniques from professionals to take your photography to the next level.';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -266,7 +282,7 @@ class CourseDetailScreen extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),
                   child: Image.network(
-                    course['imageUrl']!,  // Use the course-specific image URL
+                    course['imageUrl']!,
                     height: 200,
                     width: double.infinity,
                     fit: BoxFit.cover,
@@ -296,44 +312,17 @@ class CourseDetailScreen extends StatelessWidget {
               SizedBox(height: 8),
               Text(course['description']!),
               SizedBox(height: 16),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    children: [
-                      Icon(Icons.access_time, size: 32),
-                      SizedBox(height: 8),
-                      Text('6 Hours'),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Icon(Icons.card_membership, size: 32),
-                      SizedBox(height: 8),
-                      Text('Certificate'),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Icon(Icons.leaderboard, size: 32),
-                      SizedBox(height: 8),
-                      Text('Beginner'),
-                    ],
-                  ),
-                ],
-              ),
-              SizedBox(height: 16),
               Text(
                 'What will I learn?',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 8),
-              Text(
-                'This course will teach you the basics of travel photography, including composition, lighting, and storytelling. You will learn how to capture stunning photos that tell a story and create lasting memories.',
-              ),
+              Text(getCourseDetails(course['title']!)),
               SizedBox(height: 16),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  // Action for starting the course
+                },
                 child: Text('Start Learning'),
                 style: ElevatedButton.styleFrom(
                   minimumSize: Size(double.infinity, 50),
@@ -344,10 +333,10 @@ class CourseDetailScreen extends StatelessWidget {
           ),
         ),
       ),
-
     );
   }
 }
+
 
 
 class MyCoursesScreen extends StatelessWidget {
@@ -577,3 +566,5 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 }
+
+
