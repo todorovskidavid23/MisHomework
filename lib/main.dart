@@ -309,6 +309,32 @@ class CourseDetailScreen extends StatelessWidget {
                 'Overview',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    children: [
+                      Icon(Icons.access_time, size: 32),
+                      SizedBox(height: 8),
+                      Text('6 Hours'),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      Icon(Icons.card_membership, size: 32),
+                      SizedBox(height: 8),
+                      Text('Certificate'),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      Icon(Icons.leaderboard, size: 32),
+                      SizedBox(height: 8),
+                      Text('Beginner'),
+                    ],
+                  ),
+                ],
+              ),
               SizedBox(height: 8),
               Text(course['description']!),
               SizedBox(height: 16),
