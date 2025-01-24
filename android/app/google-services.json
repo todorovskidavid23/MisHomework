@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "492374182525",
+    "project_id": "homework-mis",
+    "storage_bucket": "homework-mis.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:492374182525:android:17c9e55e75fefc996f3f14",
+        "android_client_info": {
+          "package_name": "com.example.homework"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "{{Api_Secret}}"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
